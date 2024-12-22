@@ -57,7 +57,7 @@ namespace Algos4
             }
         }
 
-        private void btnShowSelected_Click(object sender, RoutedEventArgs e)
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (TreeView.SelectedItem is TreeViewItem selectedItem)
             {
@@ -102,6 +102,33 @@ namespace Algos4
             else
             {
                 txtMessages.Text += "Узел не выбран.\n";
+            }
+        }
+
+        private void btnAddChild_Click(object sender, RoutedEventArgs e)
+        {
+            if (TreeView.SelectedItem is TreeViewItem selectedItem)
+            {
+                string childName = txtChildName.Text.Trim();
+                if (!string.IsNullOrEmpty(childName))
+                {
+                    TreeViewItem newChild = new TreeViewItem
+                    {
+                        Header = childName
+                    };
+                    selectedItem.Items.Add(newChild);
+                    AttachCollapsedEvent(newChild);
+                    txtMessages.Text += $"Добавлено дочерний узел: {childName} к {selectedItem.Header}\n";
+                    txtChildName.Clear(); 
+                }
+                else
+                {
+                    txtMessages.Text += "Введите имя для нового узла.\n";
+                }
+            }
+            else
+            {
+                txtMessages.Text += "Узел не выбран. Невозможно добавить дочерний узел.\n";
             }
         }
 

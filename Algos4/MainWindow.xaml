@@ -1,31 +1,20 @@
 ﻿<Window x:Class="Algos4.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Algos4"
-        mc:Ignorable="d"
-        Title="Лабораторная работа 4" Height="594" Width="978">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+        Title="MainWindow" Height="485" Width="923">
+    <Grid Margin="0,0,0,-108">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <TreeView x:Name="TreeView" Grid.Column="0" Grid.RowSpan="4" Margin="10"/>
-
-        <Button x:Name="btnBuildTree" Content="Построить дерево" Grid.Column="1" Grid.Row="0" Margin="10" Width="171" Click="btnBuildTree_Click"/>
-
-        <Button x:Name="btnShowSelected" Content="Выбрать" Grid.Column="1" Grid.Row="1" Margin="10" Width="171" Click="btnShowSelected_Click"/>
-
-        <Button x:Name="btnShowLeftSibling" Content="Левый брат выделенного узла" Grid.Column="1" Grid.Row="2" Margin="10" Width="171" Click="btnShowLeftSibling_Click"/>
-
-        <TextBlock x:Name="txtMessages" Grid.Column="1" Grid.Row="3" Margin="10" TextWrapping="Wrap"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="btnBuildTree" Content="Построить дерево" Click="btnBuildTree_Click" Margin="5"/>
+            <Button x:Name="btnShowLeftSibling" Content="Показать левого брата" Click="btnShowLeftSibling_Click" Margin="5"/>
+            <Button x:Name="btnAddChild" Content="Добавить сына" Click="btnAddChild_Click" Margin="5"/>
+        </StackPanel>
+        <TreeView x:Name="TreeView" Grid.Row="1" Margin="5,5,489,0" SelectedItemChanged="TreeView_SelectedItemChanged" Height="355" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtChildName" Margin="330,382,370,129" Grid.Row="1"/>
+        <TextBox x:Name="txtMessages" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="1" Margin="0,10,24,187" HorizontalAlignment="Right" Width="445"/>
     </Grid>
 </Window>
